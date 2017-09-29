@@ -30,7 +30,7 @@
   <% if @brands.any? %>
   <h3>Here are your brands and prices:</h3>
   <% @brands.each do |b| %>
-  <h3><%= b.brand %><%= b.price %></h3>
+  <h3><a href='/stores/<%= b.id %>/shoes'><%= b.brand %></a><%= b.price %></h3>
   <% end %>
   <% else %>
   <h3>You Have No Shoe Brands!</h3>

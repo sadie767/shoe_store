@@ -58,3 +58,9 @@ post('/add_brands/:id') do
   @get_id.brands.push(@input)
   erb(:store_edit)
 end
+
+get('/stores/:id/shoes') do
+  @id = params['id']
+  @get_id = Brand.find(params.fetch('id').to_i)
+  erb(:shoe_stores)
+end
