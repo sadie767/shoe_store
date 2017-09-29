@@ -1,0 +1,12 @@
+<h1><%= @get_id.store %></h1>
+<br><br><br>
+<h2>Brands Associated with this Store</h2>
+<h3></h3>
+<h3>Add brands to this store</h3>
+<form action='/add_brands' method='post'>
+  <div>
+    <label for='brand'>Add a Brand to this store</label>
+    <input name='brand' type='text'>
+  </div>
+  <button type="submit">Add</button>
+</form>

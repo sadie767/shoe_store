@@ -15,4 +15,18 @@
   <button type="submit">Delete Store</button>
 </form>
 <br><br><br>
+<h2>Brands Associated with this Store</h2>
+<% @get_id.brands.each do |b| %>
+<h3><%= b.brand %></h3>
+<% end %>
+<br>
+<h3>Add brands to this store</h3>
+<form action='/add_brands/<%= @get_id.id %>' method='post'>
+  <div>
+    <label for='brand'>Add a Brand to this store</label>
+    <input name='brand' type='text'>
+  </div>
+  <button type="submit">Add</button>
+</form>
+<br><br>
 <a href='/'>Return Home</a>

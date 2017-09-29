@@ -18,12 +18,6 @@ post('/stores') do
   erb(:index)
 end
 
-get('/stores/:id/edit') do
-  @id = params['id']
-  @get_id = Store.find(params.fetch('id').to_i)
-  erb(:store_edit)
-end
-
 patch('/stores/:id/update') do
   @store = params['store']
   @get_id = Store.find(params.fetch('id').to_i)
@@ -43,8 +37,24 @@ post('/brands') do
   @id = params[:id]
   @brand = params['brand']
   @price = params['price']
-  @input = Brand.new({:id => nil, :brand => brand, :price => @price})
+  @input = Brand.new({:id => nil, :brand => @brand, :price => @price})
   @input.save
   @brands = Brand.all
   erb(:index)
+end
+
+get('/stores/:id/edit') do
+  @id = params['id']
+  @get_id = Store.find(params.fetch('id').to_i)
+  erb(:store_edit)
+end
+
+post('/add_brands/:id') do
+  @brands = Brand.all
+  @get_id = Store.find(params.fetch('id').to_i)
+  @brand = params['brand']
+  @input = Brand.create({:brand => @brand})
+  @input.save
+  @get_id.brands.push(@input)
+  erb(:store_edit)
 end
