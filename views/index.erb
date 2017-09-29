@@ -1,0 +1,15 @@
+<div class='container'>
+<h1>Everything Shoes!</h1>
+<h3>Add a Store</h3>
+  <div>
+    <form action='/stores' type='post'>
+      <label for='store'>Add a Store:</label>
+      <input name='store' type='text'>
+    </div>
+      <button type='submit'>Add Store</button>
+    </form>
+
+  <% @store.each do |s| %>
+    <h3><%= s.store %></h3>
+  <% end %>
+</div>
