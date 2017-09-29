@@ -1,15 +1,38 @@
 <div class='container'>
 <h1>Everything Shoes!</h1>
+<br>
+<h3>Here is a list of all of your stores:</h3>
+<% @stores.each do |s| %>
+<p><a href='/stores/<%= s.id %>/edit'><%= s.store %></a></p>
+<% end %>
+<br>
 <h3>Add a Store</h3>
   <div>
-    <form action='/stores' type='post'>
+    <form action='/stores' method='post'>
       <label for='store'>Add a Store:</label>
       <input name='store' type='text'>
-    </div>
+    </div><br>
       <button type='submit'>Add Store</button>
     </form>
-
-  <% @store.each do |s| %>
-    <h3><%= s.store %></h3>
+<br><br><br>
+<h3>Add a Shoe Brand with it's Price:</h3>
+  <div>
+    <form action='/brands' method='post'>
+      <label for='brand'>Add a Brand:</label>
+      <input name='brand' type='text'>
+  </div>
+  <div>
+      <label for='price'>Add it's Price:</label>
+      <input name='price' type='text'>
+  </div>
+      <button type='submit'>Add Brand</button>
+    </form>
+  <% if @brands.any? %>
+  <h3>Here are your brands and prices:</h3>
+  <% @brands.each do |b| %>
+  <h3><%= b.brand %><%= b.price %></h3>
+  <% end %>
+  <% else %>
+  <h3>You Have No Shoe Brands!</h3>
   <% end %>
 </div>

@@ -1,0 +1,18 @@
+<h1><%= @get_id.store %></h1>
+<br>
+<form action="/stores/<%= @get_id.id() %>/update" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <label for="store">Edit Store Name:</label>
+  <input id="t2" name="store" type="text">
+
+  <button type="submit">Update Store</button>
+</form>
+<br><br><br>
+<form action="/stores/<%= @get_id.id() %>/delete" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete Store</button>
+</form>
+<br><br><br>
+<a href='/'>Return Home</a>
