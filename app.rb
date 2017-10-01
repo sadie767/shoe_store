@@ -42,7 +42,7 @@ post('/brands') do
   @price = params['price']
   @input = Brand.new({:id => nil, :brand => @brand, :price => @price})
   if @input.save()
-    erb(:index)
+    redirect('/')
   else
     erb(:errors_brands)
   end
