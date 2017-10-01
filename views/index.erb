@@ -1,12 +1,12 @@
 <div class='container'>
 <h1>Everything Shoes!</h1>
 <br>
-<h3>Here is a list of all of your stores:</h3>
+<h2>Here is a list of all of your stores:</h2>
 <% @stores.each do |s| %>
-<p><a href='/stores/<%= s.id %>/edit'><%= s.store %></a></p>
+<h3><a href='/stores/<%= s.id %>/edit'><%= s.store %></a></h3>
 <% end %>
 <br>
-<h3>Add a Store</h3>
+<h2>Add a Store</h2>
   <div>
     <form action='/stores' method='post'>
       <label for='store'>Add a Store:</label>
@@ -15,7 +15,7 @@
       <button type='submit'>Add Store</button>
     </form>
 <br><br><br>
-<h3>Add a Shoe Brand with it's Price:</h3>
+<h2>Add a Shoe Brand with it's Price:</h2>
   <div>
     <form action='/brands' method='post'>
       <label for='brand'>Add a Brand:</label>
@@ -27,7 +27,8 @@
   </div>
       <button type='submit'>Add Brand</button>
     </form>
-  <h3>Brands</h3>
+    <br><br><br>
+  <h2>Brands</h2>
   <% @brands.each do |b| %>
   <h3><a href='/stores/<%= b.id %>/shoes'><%= b.brand %></a></h3><p> $<%= b.price %>0</p>
   <% end %>

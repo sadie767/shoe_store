@@ -13,9 +13,11 @@ post('/stores') do
   @id = params[:id]
   @store = params['store']
   @input = Store.new({:id => nil, :store => @store})
-  @input.save()
-  @stores = Store.all
-  erb(:index)
+  if @input.save()
+    redirect('/')
+  else
+    erb(:errors_stores)
+  end
 end
 
 patch('/stores/:id/update') do
@@ -30,17 +32,20 @@ delete('/stores/:id/delete') do
   @get_id = Store.find(params.fetch('id').to_i)
   @get_id.delete
   @stores = Store.all
-  erb(:index)
+  redirect('/')
 end
 
 post('/brands') do
+  @brands = Brand.all
   @id = params[:id]
   @brand = params['brand']
   @price = params['price']
   @input = Brand.new({:id => nil, :brand => @brand, :price => @price})
-  @input.save
-  @brands = Brand.all
-  erb(:index)
+  if @input.save()
+    erb(:index)
+  else
+    erb(:errors_brands)
+  end
 end
 
 get('/stores/:id/edit') do
@@ -53,14 +58,19 @@ post('/add_brands/:id') do
   @brands = Brand.all
   @get_id = Store.find(params.fetch('id').to_i)
   @brand = params['brand']
-  @input = Brand.new({:brand => @brand})
+  @price = params['price']
+  @input = Brand.new({:brand => @brand, :price => @price})
   @input.save
+  if @input.save
   @get_id.brands.push(@input)
   erb(:store_edit)
+else
+  erb(:errors_brands)
+end
 end
 
 get('/stores/:id/shoes') do
   @id = params['id']
-  @get_id_brand = Brand.find(params.fetch('id').to_i)
+  @get_id = Brand.find(params.fetch('id').to_i)
   erb(:shoe_stores)
 end
