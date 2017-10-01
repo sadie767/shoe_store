@@ -1,6 +1,7 @@
-<h1>Here are the Stores that sell <%= @get_id.brand %></h1>
-<ul>
-  <% @get_id.stores.each do |s| %>
-  <li><%= s.store %></li>
-  <% end %> 
-</ul>
+<h1>Here are the Stores that sell <%= @get_id_brand.brand %></h1>
+  <% @get_id_brand.stores.each do |s| %>
+  <h3><%= s.store %></h3>
+  <% end %>
+
+<br><br>
+<h4><a href='/'>Return Home</a></h4>

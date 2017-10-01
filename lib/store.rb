@@ -1,8 +1,9 @@
 class Store < ActiveRecord::Base
   has_many :trackers
   has_many :brands, through: :trackers
+  before_save(:store, :first_letter)
 
-  def letter
+  def first_letter
     array = self.store.split
     array.each do |t|
       t.capitalize!

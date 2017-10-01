@@ -27,12 +27,8 @@
   </div>
       <button type='submit'>Add Brand</button>
     </form>
-  <% if @brands.any? %>
-  <h3>Here are your brands and prices:</h3>
+  <h3>Brands</h3>
   <% @brands.each do |b| %>
-  <h3><a href='/stores/<%= b.id %>/shoes'><%= b.brand %></a><%= b.price %></h3>
-  <% end %>
-  <% else %>
-  <h3>You Have No Shoe Brands!</h3>
+  <h3><a href='/stores/<%= b.id %>/shoes'><%= b.brand %></a></h3><p> $<%= b.price %>0</p>
   <% end %>
 </div>

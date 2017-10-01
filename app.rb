@@ -53,7 +53,7 @@ post('/add_brands/:id') do
   @brands = Brand.all
   @get_id = Store.find(params.fetch('id').to_i)
   @brand = params['brand']
-  @input = Brand.create({:brand => @brand})
+  @input = Brand.new({:brand => @brand})
   @input.save
   @get_id.brands.push(@input)
   erb(:store_edit)
@@ -61,6 +61,6 @@ end
 
 get('/stores/:id/shoes') do
   @id = params['id']
-  @get_id = Brand.find(params.fetch('id').to_i)
+  @get_id_brand = Brand.find(params.fetch('id').to_i)
   erb(:shoe_stores)
 end
