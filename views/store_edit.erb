@@ -16,22 +16,20 @@
   <button type="submit">Update Store</button>
 </form>
 <br><br><br>
+<h3>Add brands to this store</h3>
+<form action='/add_brands/<%= @get_id.id %>' method='post'>
+  <label for="brand">Select a Brand to Add:</label>
+<select name='brand' type='text'>
+  <% @brands.each() do |brand| %>
+    <option value="<%= brand.id()%>"> <%= brand.brand() %> </option>
+  <% end %>
+</select>
+<button type="submit">Add Brand</button>
+</form>
+<br><br>
 <h2>Brands Associated with this Store</h2>
 <% @get_id.brands.each do |b| %>
 <h3><%= b.brand %></h3>
 <% end %>
 <br>
-<h3>Add brands to this store</h3>
-<form action='/add_brands/<%= @get_id.id %>' method='post'>
-  <div>
-    <label for='brand'>Add a Brand to this store</label>
-    <input name='brand' type='text'>
-  </div>
-  <div>
-    <label for='price'>Add Price of shoe</label>
-    <input name='price' type='text'>
-  </div>
-  <button type="submit">Add</button>
-</form>
-<br><br>
 <a href='/'>Return Home</a>
